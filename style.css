@@ -1,0 +1,285 @@
+:root {
+    /* Color */
+    --white-color: #fff;
+    --black-color: #140a00;
+    --blue-color: #045fd4;
+    --red-color: #df0505;
+    --grey-dark-color: #3f3e3e;
+    --grey-light-color: #e0e0e0;
+
+    /* Size */
+    --padding: 12px;
+    --avatar-size: 36px;
+
+    /* Font Size */
+    --font-large: 18px;
+    --font-medium: 14px;
+    --font-small: 12px;
+    --font-micro: 11px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* 패딩/마진 값 줬을때 사이즈에 포함되도록 */
+}
+
+body {
+    font-family: Roboto;
+}
+
+ul {
+    list-style: none;
+}
+
+button,
+button:focus {
+    border: none;
+    cursor: pointer;
+    outline: none;
+    background-color: var(--white-color);
+    padding-left: var(--padding);
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--padding);
+    background-color: black;
+    color: var(--white-color);
+}
+
+header .logo {
+    font-size: var(--font-large);
+}
+
+header .logo i {
+    color: var(--red-color)
+}
+
+header .icons .fa-search {
+    margin-right: var(--padding);
+}
+
+
+/* SASS & LESS
+header {
+    .logo {
+
+    }
+
+    .icons {
+
+    }
+} 
+*/
+
+/* Video Player */
+.player {
+    position: sticky;
+    top: 0;
+    /* 스크롤할때 상단에 고정 */
+
+    text-align: center;
+    background-color: black
+}
+.player iframe {
+    width: 100%;
+    /* height: 100%; */
+    /* item을 반응형을 만들때는 %를 사용하는것이 유용하다 */
+    /* hegiht를 100%를 주면 높이가 너무 낮아짐
+    iframe 크기가 고정되어 있어서 그런거같음 일단 주석처리*/
+
+    max-width: 1000px;
+    /* 최대 크기 제한 */
+
+}
+
+.infoAndUpNext > .info {
+    margin: var(--padding);
+}
+
+/* 적용하고자 하는 범위를 최대한 작게 */
+.info .metadata .hashtags {
+    display: flex;
+    font-size: var(--font-small);
+    color: var(--blue-color);
+}
+
+.info .metadata .hashtags li{
+    margin-right: 4px;
+}
+
+.info .metadata .titleAndButton {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info .metadata .titleAndButton .title {
+    font-size:var(--font-medium);
+    margin-right: var(--padding);
+}
+
+.info .metadata .titleAndButton .title.clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    /* 텍스트 라인 제한 */
+}
+
+.info .metadata .titleAndButton .moreBtn {
+    height: 100%;
+    transition: transform 300ms ease-in-out;
+    padding: 0;
+}
+
+.info .metadata .titleAndButton .moreBtn.clicked {
+    transform: rotate(180deg);
+}
+
+.info .views {
+    font-size: var(--font-small);
+    color: var(--grey-dark-color);
+}
+
+.info .actions {
+    display: flex;
+    justify-content: space-around;
+    margin: var(--padding) 0;
+}
+
+.info .actions button {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-small);
+    color: var(--grey-dark-color);
+}
+
+.info .actions button i {
+    margin: 0 auto;
+    /* 위/아래는 지정하지않고 양옆을 auto로 지정하면 가운데 정렬 */
+
+    margin-bottom: calc(var(--padding) / 2);
+    /* 16 / 2 → 8px */
+    font-size: 16px;
+
+}
+
+.info .actions button i.active {
+    color: var(--blue-color);
+}
+
+/* Channel Description */
+.info .channel {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--grey-light-color);
+    border-bottom: 1px solid var(--grey-light-color);
+    
+}
+
+.info .channel .metadata {
+    display: flex;
+    align-items: center;
+}
+
+.info .channel .metadata .info {
+    display: flex;
+    flex-direction: column;
+    padding: var(--padding);
+}
+
+.info .channel .metadata img {
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    border-radius: 50%;
+}
+
+.info .channel .metadata .info .name {
+    font-size: var(--font-medium);
+}
+
+.info .channel .metadata .info .subscribers {
+    font-size: var(--font-small);
+    color: var(--grey-dark-color);
+}
+
+.info .channel .subscribe {
+    text-transform: uppercase;
+    /* 소문자 → 대문자로 */
+    color: var(--red-color);
+    font-size: var(--font-medium);
+    padding-right: var(--padding);
+}
+
+/* Up Next */
+.upNext {
+    padding: 0 var(--padding);
+}
+
+.upNext > .title {
+    font-size: var(--font-medium);
+    color: var(--grey-dark-color);
+    margin-bottom: calc(var(--padding) / 2);
+}
+
+.upNext .item {
+    display: flex;
+    margin-top: var(--padding);
+}
+
+.upNext .item .img {
+    flex: 1 1 35%;
+    margin-right: var(--padding);
+}
+
+.upNext .item .img img {
+    width: 100%;
+}
+
+.upNext .item .info {
+    flex: 1 1 60%;
+}
+
+.upNext .item .moreBtn {
+    flex: 1 1 5%;
+}
+
+.upNext .item .info {
+    display: flex;
+    flex-direction: column;
+}
+
+.upNext .item .info .title {
+    font-size: var(--font-small);
+}
+
+.upNext .item .info .name,
+.upNext .item .info .views {
+    font-size: var(--font-micro);
+    color: var(--grey-dark-color);
+}
+
+.infoAndUpNext {
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+    /* 화면이 768px 이상일 때 적용 */
+    .infoAndUpNext {
+        flex-direction: row;
+        margin: var(--padding) 0;
+    }
+
+    .infoAndUpNext .info {
+        flex: 1 1 50%;
+    }
+
+    .infoAndUpNext .upNext {
+        flex: 1 1 50%;
+    }
+}
